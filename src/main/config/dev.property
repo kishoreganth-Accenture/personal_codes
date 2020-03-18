@@ -1,0 +1,11 @@
+[dev]
+host = localhost
+user = root
+password = root
+db = datamodel
+
+[int]
+host = localhost1
+user = root1
+password = root1
+db = datamodel1

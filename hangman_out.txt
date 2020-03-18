@@ -1,0 +1,88 @@
+import random
+words = ["mother","father", "baby", "child", "toddler", 
+"teenager", "grandmother", "student", "teacher", "minister", "woman"]
+gamer = ""
+w = random.choice(words)
+if len(w)==4:
+    a=random.randrange(2,len(w))
+    b=random.randrange(0,len(w)//2)
+    # print(a,b)
+    
+    for i in range(len(w)):
+        if i==a:
+            gamer = gamer +"_"
+        elif i==b:
+            gamer = gamer +"_"
+        else:
+            gamer = gamer +w[i]
+   
+elif len(w)>=5:
+    c=random.randrange((len(w)//2)+1,len(w))
+    a=random.randrange(0,len(w)//2-1)
+    b=random.randrange((len(w)//2)-1,(len(w)//2)+1)
+    
+    for i in range(len(w)):
+        if i==a: gamer = gamer +"_"
+        elif i==b: gamer= gamer+"_"
+        elif i==c:gamer = gamer+"_"
+        else: gamer =gamer +w[i]
+        
+    
+else: pass 
+
+def game_mode(original,game):
+    print("  \t~~ HANGMAN OUT ~~\n")
+    print(" find the word before u hang urself: ")
+    
+    print("\t", game)
+    count = 6
+    for i in range(6):
+        print("\n only",count," chances left :")
+        c = input()
+        if original == c and count > 0:
+            print ("\n You are correct ! SAVED ")
+            print(" _____")
+            print(" |    |")
+            print(" |    ")
+            print(" |   \O/ ")
+            print(" |    | ")
+            print(" |    | ")
+            print("---  / \ ")
+            break
+        elif c in original and count >0:
+            print("found one character ")
+            idx = original.index(c)
+            # print(idx)
+            gl = list(game)
+            gl[idx]=c
+            game = "".join(gl)
+            if original == game:
+                print("\t",game)
+                print ("\n You are correct ! SAVED ")
+                print(" _____")
+                print(" |    |")
+                print(" |      ")
+                print(" |   \O/ ")
+                print(" |    | ")
+                print(" |    | ")
+                print("---  / \ ")
+                break
+            count-=1
+            print("\t",game)
+        elif c not in original and count >0:
+            count-=1
+    else:
+        print(" \n \t you are dead ")
+        print(" _____")
+        print(" |    |")
+        print(" |    O")
+        print(" |   /|\ ")
+        print(" |    | ")
+        print(" |   / \ ")
+        print("---  ")
+    
+            
+    
+game_mode(w,gamer)
+
+    
